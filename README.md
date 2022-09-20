@@ -6,6 +6,9 @@ foot_bait_blocker
 An app to identify clickbait article in football using machine learning
 The language is french
 
+Here is the [demo link](https://aurelsteve77-foot-bait-blocker-srcdashboardapp-hou54y.streamlitapp.com/)
+
+
 Background
 ----------
 “Kylian Mbappe gifle Pogba”, “Le PSG au bord de l’implosion”, ou encore
@@ -20,13 +23,46 @@ great disappointment.
 
 Objectives
 ----------
-| Task | Technique                                                       | Tools/Packages Used |
-| --- |-----------------------------------------------------------------|---------------------|
-| Data Collection | Article extraction from websites and twitter using webscrapping | snscrap             |
-| Data preprocessing | Clean html, NER, Regex, Lemmatization, Stemming , TFIDF         | Spacy, re, bs4      |
-| Data modeling | Random Forest, LSTM, SVM                                        |                     |
-| Interface web | Streamlit                                                       | Streamlit           |
+The goal of this project is to build a bait blocker on football french news articles,
+a kind of "bait'block" using machine learning
 
+The objectives of the projects are the following:
+* Build a new dataset of french bait football news using webscrapping
+* Build a binary supervised classification model of bait article using headline
+* Build a custom web interface allowing to predict if a headline is clickbait or not
+* Build a chrome extension to block bait
+
+Steps
+-----
+| Task               | Technique                                                       | Tools/Packages Used |
+|--------------------|-----------------------------------------------------------------|---------------------|
+| Data Collection    | Article extraction from websites and twitter using webscrapping | snscrap             |
+| Data preprocessing | Clean html, NER, Regex, Lemmatization, Stemming , TFIDF         | Spacy, re, bs4      |
+| Data modeling      | Random Forest, LSTM, SVM                                        |                     |
+| UI : Web Interface | Streamlit                                                       | Streamlit           |
+
+
+Data Collection
+---------------
+Data are collected using web scrapping in two step
+#### First step: Get articles headline and link on twitter 
+The goal is to have a list of article's headlines and their link on twitter account
+categorized as clickbait (foot01, foot mercato...) and other more serious (sofoot, foot365)
+This is done using [snscrape](https://github.com/JustAnotherArchivist/snscrape)
+
+#### Second step: Get the body of the article
+The goal in this step is to extract the body of each article using the link got
+on twitter.
+This is done by using beautiful 
+
+Data preprocessing
+------------------
+
+Modeling
+----------
+
+UI
+-----------
 
 Project Organization
 ------------
