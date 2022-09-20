@@ -4,10 +4,13 @@ import numpy as np
 import pickle
 import sys
 import os
-sys.path.append('..')
-import src.data.preprocess as dp
+import plotly.graph_objects as go
 
-st.write(os.getcwd())
+IS_OFFLINE = True
+
+if IS_OFFLINE:
+    sys.path.append(os.getcwd())
+import src.data.preprocess as dp
 
 MODEL_PATH = {
     'MODEL_FOLDER' : 'models',
@@ -17,7 +20,7 @@ MODEL_PATH = {
     'TEXT_VECTORIZE_NAME' : 'text_vectorizer.pickle'
 }
 
-st.title('Foot Bait Blocker')
+st.title('Foot ⚽ Bait Blocker')
 
 @st.cache(allow_output_mutation=True)
 def load_model(model_path):
@@ -44,24 +47,50 @@ def load_model(model_path):
 
     return model, features_list, pos_vectorizer, text_vectorizer
 
-# loading model text
-model_load_state = st.text('Loading the model ....')
 
 # load the model
 model, features_list, pos_vectorizer, text_vectorizer = load_model(MODEL_PATH)
 
-# notify that model sucessful loader
-model_load_state.text('Loading the model .... done!')
 
 left_columns, right_columns = st.columns(2)
 
 with left_columns:
-   headline = st.text_area("Titre de l'article", value='Le PSG est dos au mur')
+    st.write("Entrez le titre de l'article \n")
+    headline = st.text_area("Titre de l'article", value='Le PSG est dos au mur')
 
 with right_columns:
-    st.write('Right text')
     df = pd.DataFrame([headline], columns=['headline'])
     x = dp.data_handling(df, pos_vectorizer, text_vectorizer, features_list)
     y_pred = model.predict(x)
     y_pred_proba = model.predict_proba(x)[:, 1]
-    st.write(y_pred_proba.tolist())
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=y_pred_proba.tolist()[0]*100,
+        title={'text' : 'Probabilité de clickbait', 'font_size' : 18},
+        domain={'x' : [0, 1], 'y' : [0,1]},
+        number={'font_size': 24, 'suffix' : '%'},
+        gauge={
+            'axis' : {'range' : [0,100]},
+            'bar': {'color': "darkorange" if y_pred_proba.tolist()[0] > 0.5 else 'darkcyan'}
+        }
+    ))
+    fig.update_layout(
+        autosize=False,
+        width=230,
+        height=230,
+        margin=dict(
+            l=0,
+            r=0,
+            b=0,
+            t=0,
+            pad=0
+        ),
+    )
+    st.plotly_chart(fig)
+    #st.write(y_pred_proba.tolist())
+
+if y_pred_proba:
+    if y_pred_proba.tolist()[0] < 0.5:
+        st.markdown('<h1 style="font-size: 70px; text-align:center">😊<p style="font-size: 28px; color: darkcyan">Pas de clickbait</p></h1>', unsafe_allow_html=True)
+    else:
+        st.markdown('<h1 style="font-size: 70px; text-align:center">🤬<p style="font-size: 28px; color: darkorange">Clickbait</p></h1>', unsafe_allow_html=True)
