@@ -5,8 +5,9 @@ import pickle
 import sys
 import os
 sys.path.append('..')
-import data.preprocess as dp
+#import data.preprocess as dp
 
+st.write(os.getcwd())
 
 MODEL_PATH = {
     'MODEL_FOLDER' : '..\..\models',
