@@ -6,7 +6,6 @@
 beautifulsoup4
 clean-text
 emoji
-fr-core-news-sm
 jupyter
 jupyterlab
 lxml
