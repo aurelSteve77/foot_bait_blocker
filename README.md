@@ -1,7 +1,32 @@
 foot_bait_blocker
 ==============================
 
-Build a football news bait blocker to filter good foot article from bad article using data science
+![UI](cover.png)
+
+An app to identify clickbait article in football using machine learning
+The language is french
+
+Background
+----------
+“Kylian Mbappe gifle Pogba”, “Le PSG au bord de l’implosion”, ou encore
+“Mbappe trahi par le psg, c’est confirmé” we all have already come across this kind
+of article on the internet, given by a large number of websites that are ready to do
+anything to get people to click on the article and thus receive an audience. 
+This is what we call "putaclic" or "clickbait" for the most informed,
+click traps, which consist in putting an enticing title to force users to click to see
+the content of the article which often does not correspond to the proposed title to their
+great disappointment.
+
+
+Objectives
+----------
+| Task | Technique                                                       | Tools/Packages Used |
+| --- |-----------------------------------------------------------------|---------------------|
+| Data Collection | Article extraction from websites and twitter using webscrapping | snscrap             |
+| Data preprocessing | Clean html, NER, Regex, Lemmatization, Stemming , TFIDF         | Spacy, re, bs4      |
+| Data modeling | Random Forest, LSTM, SVM                                        |                     |
+| Interface web | Streamlit                                                       | Streamlit           |
+
 
 Project Organization
 ------------
@@ -37,6 +62,8 @@ Project Organization
     │   │
     │   ├── data           <- Scripts to download or generate data
     │   │   └── make_dataset.py
+    |   ├── dashboard       <- Web interface app (UI)
+    │   │   └── app.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
     │   │   └── build_features.py
