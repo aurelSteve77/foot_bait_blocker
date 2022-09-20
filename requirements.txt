@@ -30,7 +30,7 @@ colorama==0.4.5
 commonmark==0.9.1
 cryptography==37.0.1
 cycler==0.11.0
-cymem==2.0.6
+cymem
 daal4py==2021.5.0
 dash==2.6.1
 dash-bootstrap-components==1.2.1
