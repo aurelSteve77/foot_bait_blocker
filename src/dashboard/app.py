@@ -5,7 +5,7 @@ import pickle
 import sys
 import os
 sys.path.append('..')
-#import data.preprocess as dp
+import src.data.preprocess as dp
 
 st.write(os.getcwd())
 
