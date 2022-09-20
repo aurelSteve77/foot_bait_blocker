@@ -10,7 +10,7 @@ import src.data.preprocess as dp
 st.write(os.getcwd())
 
 MODEL_PATH = {
-    'MODEL_FOLDER' : 'ressources',
+    'MODEL_FOLDER' : 'models',
     'MODEL_NAME' : 'model_rf.pickle',
     'FEATURE_NAME' : 'features_names.pickle',
     'POS_VECTORIZER_NAME' : 'pos_vectorizer.pickle',
