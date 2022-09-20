@@ -20,15 +20,9 @@ requests
 scikit-learn
 scikit-learn-intelex
 scipy
-spacy
-spacy-alignments
-spacy-lefff
-spacy-legacy
-spacy-loggers
-spacy-transformers
 streamlit
 torch
 transformers
-https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.0.0/fr_core_news_sm-3.0.0.tar.gz
-
-
+install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz
+spacy>=3.0.0,<4.0.0
+https://github.com/explosion/spacy-models/releases/download/fr_core_new_sm-3.4.0/fr_core_news_sm-3.4.0.tar.gz#egg=fr_core_news_sm
