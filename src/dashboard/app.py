@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 import pickle
 import sys
-
-sys.path.append('..\data')
+import os
+sys.path.append('..')
 import data.preprocess as dp
 
 
